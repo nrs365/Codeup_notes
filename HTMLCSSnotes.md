@@ -34,8 +34,8 @@ agent - user agent - describes the type of browser that is being used
 can use line break <br> inside <p>
 	<p>Gimme a break,<br>gimme a break,<br>break me off a piece... well, you know the rest.</p>
 <em>Emphasis in italics</em>
-the tags are supposed to define what's in the doc, not what it does, so maybe <em> is written as bold and italics, based on how it's styled, but we are trying to define how it should be styled
-	same with <strong> - makes it bold
+the tags are supposed to define what's in the doc, not what it does, so maybe < em > is written as bold and italics, based on how it's styled, but we are trying to define how it should be styled
+	same with < strong > - makes it bold
 		
 normal elements have content
 block elements vs inline elements - block elements are, by default, set to take up the full width of the page
