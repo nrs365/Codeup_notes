@@ -1,23 +1,16 @@
-# This is a heading
-## this is a subheading
-###### this is tiny
+# Notes from Codeup Badlands
+## Finalized notes
 
-1. item 1
-1. item 2
-1. item 3
+###This repo has notes I took throughout the Badlands cohort, organized by language.  I tried to be as detailed as possible but, well, even I make mistakes ;)
 
-* first item
-* second item
-	*sub item
-	*sub item
+Most of it looks something like:
 ```
 echo "hello world";
 if (condition){
 	//do stuff
 }
 ```
+An example of markdown:
 Finally, this is a last paragraph with **bold** text and *italics* and `code`.
-
-making an edit and testing pushes
 
 edit 1416
