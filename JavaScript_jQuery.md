@@ -814,5 +814,3 @@ setInterval(some_function, time);
 setTimeout(function() {}, time);
 	set Timeout(some_function, time);
 	not a loop; it just waits and does it once
-		
-		

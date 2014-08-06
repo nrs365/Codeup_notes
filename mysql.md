@@ -241,6 +241,8 @@ breaking up the sql functions in a certain way will allow the process to happen 
 
 SELECT first_name, last_name, unix_timestamp(hire_date)
 FROM employees LIMIT 25;	
+datediff() php?
+dateadd()
 
 SELECT from_unixtime(1403029097);	
 
@@ -287,7 +289,7 @@ can make inserting rows slower b/c it has to recalcuate
 when to add index: what am i going to be searching by?
 mysql slow query log - if it takes more than ten seconds to search it's too long and you should look at an index on col a b c
 
-unique index - content of this index has to be unique
+unique index - content of this index has to be unique; tend to use for email addresses in db
 ALTER TABLE quotes
 ADD UNIQUE (content); // no duplicate
 
@@ -337,6 +339,7 @@ CREATE TABLE `titles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+use **UNSIGNED** when making id INT because it'll make it only positive ids starting at 1 and going on to 250, instead of starting at -250 and going to 250
 
 SELECT * FROM users JOIN roles ON users.role_id = roles.id; // adding in two more col? lose two rolls?
 roll id was null? inter joined
@@ -363,3 +366,72 @@ users table is the parent table, join children (foreign key tables)
 right joins feel weird
 
 Reflect and share: everything was fine until we started trying to join things. I was having a lot of fun with db until now.  >_> joining... irony...
+
+###6/18/14
+
+
+associative table - many to many; if one side is one you need a left, right, or inner join
+
+
+
+SELECT r.name, count(u.id) AS number_of_users
+FROM roles r
+JOIN users u 
+ON r.id = u.role_id;
+GROUP BY r.name; // same as running SELECT DISTINCT r.name
+
+SELECT r.name FROM roles r GROUP BY r.name;// these two are the same things and do the same thing
+SELECT DISTINCT r.name FROM roles r;
+
+
+
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS full_name, d.dept_name
+FROM employees AS e
+JOIN dept_emp AS de
+ON de.emp_no = e.emp_no
+JOIN departments AS d
+ON d.dept_no = de.dept_no;
+
+SELECT d.dept_name, dm.emp_no
+FROM departments d
+LEFT JOIN dept_manager dm ON d.dept_no = dm.dept_no
+LEFT JOIN employees e ON dm.emp_no = e.emp_no
+WHERE dm.to_date='9999-01-01';
+
+__________________
+**doing subqueries**
+
+subqueries are nested select queries
+
+SELECT first_name, last_name, birth_date
+FROM employees
+WHERE emp_no
+    IN
+    (
+        SELECT emp_no
+        FROM dept_manager
+    )
+LIMIT 10;
+returns a subset of employees with ____
+
+the inner query gets modified (the nested select)
+
+WHERE IN - where a set of things might be equal to other things
+can get multiple results
+WHERE emp_no IN (101010, 110022); // can pass multiple things to check
+WHERE first_name = 'Aamer';
+WHERE first_name OR first_name = 'Aamod';
+WHERE first_name IN ('Aamer', 'Aamod');
+
+using GROUP BY automatically asc, can use dsc for ordering
+
+
+SELECT *
+FROM employees
+WHERE gender = 'F'
+AND emp_no IN (
+	SELECT emp_no
+	FROM dept_manager
+	....
+	
+	

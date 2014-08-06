@@ -303,211 +303,344 @@ why you want to use this - depends on what you want the user experience to be; l
 
 harvesthq.github jquery chosen
 
-####5/26/14
+###CSS
 
-Reviewing POST and GET - use GET with pagentation;
-forms almost always use POST;
-when putting PHP in HTML, JS prefers to have it at the top; don't leave white space beteen php and html headers b/c it'll effect the headers
-
-###Javascript
-Javascript - happens inside the browser
-dynamically typed language; object oriented langauge - everything is an object
-nodeJS - new fad - allows you to run javascript like ______
-
-interactive HTML5 - talking about javascript, PHP, HMTL together
-robby leonardi - really cool interactive resume
-arduino - cheaper on internet than at radio shack can be used to feed koi - cheap and programmable in Javascript (used to work with C) - check make magazine/maker community
-
-mobile apps - using Javascript - like titanium and phonegap using javascript and html
-
-browser and game engines are being written in javascript and html
-
-Main thing to know is that Java and Javascript are not related (lol)
-
-Ecma - design crew that votes on things (sounds like MLA)
-gs5.github.io
-
-javascript: the good parts - doug crockford
-
-using javascript in the web browser console -
-
-five data types in javascript - bool, num, string, undefined, and null
-
-complex type - object
-special object type - function, array
-
-var value = 'codeup'; - don't use dollarsigns;
-var group = 'codeup', cohort = 'badlands'; // can define multiple variables at one time on one line
-debate on using semi colons at the end of the line in javascript - javascript will run without using the semicolon, so it's not really needed
-if the semicolor doesn't exists, and we get an error, try it again with a semicolon, and it'll prob work but it'll be slower - JS suggests using semicolons at the end of the line.  DO IT.
-
-variables are mutable - we can change the type and change the value;
-
-typeof group; // give the type of the variable stored (bool, num, string, undef, null)
-const pi = 3.14;
-constants = immutable - like pi 
-javascript will not give an error message when you try to set a constant;
-null - a value that contains nothing;
-undefined - not null, not string, not an object; undefined is what a variable is before it's been given a value
-
-can do var codeup; codeup == undefined; -> true
-
-code comments - // in console, single line
-/* comments <3 */ for multi line comments
-
-var n = null;
-n; // null
-typeof n; //"object" - has to do with object oriented language
-typeof doSomething = function () {};
-typeof doSomething; // returns function;
-
-Javascript these return as false:
-false, null, , 0, '' and "", 
-
-undefined, NaN (special constant for not-a-number) // not acutally evaluating to true or false
-
-Other values will return true
-
-logical operators - &&, ||, !
-In JavaScript, the basic logical operators ordered from HIGH to LOW precedence are as follows:
-NOT is evaluated before
-AND, which is evaluated before
-OR
-use parenthesis for grouping
-don't use double negatives, but only see double negation when trying to cast to a bool (!!var)
-
-
-####5/27/14
-notes got lost b/c macs don't always just work :(
-
-####5/28/14
-review - Javascript functions
-overloading not allowed in PHP and JavaScript
-functions in Javascript are treated as first class
-dialogue (dialog?) with alert/confirm/prompt
-
-
-Variable scope - 
-global variables - variable that are declared outside of the function (the scope in PHP says variables declared outside of the function are not in the same scope)
-the variable will get attributes of its parent object?  windows?
-
-"javascript is the cockroach of the internet.  you just can't kill it"
-
-local variables - variables inside the function can be seen inside the function but not outside, globals can be seen anywhere
-
-can change value of global variable in a function
-
-hoisting - Javascript -
-var globalVar = 'global';
-brings the variable up to the top of the function; hoisting overrides the parameter passed (if you pass the same parameter)
-if variables have errors saying undefined, it' probably being hoisted from inside the function
-sayHello();
-sayHello2();
-
-function sayHello() { // won't have hoisting
-alert('hello');
+<style>
+p{
+	color: orange;
 }
-var sayHello2 = function(){ // anon function, subject to hoisiting
-alert('hello2');
-}
-two ways to declare a function
-hoisting moves the variable declaration to the top but it makes it undefined
-best practice - declare variables at the top of the function.  still going to have to declare vars inside the fuctions, but just put everything you can at the top
+</style>
 
-use var keyword when creating variables, don't use var when reassigning it, (unless you're redeclaring it inside a function, maybe?)
+<p style="color: green; font-family: Courier;">
+</p>
 
-[you hang up first
-no you hang up first]
+<link rel="stylesheet" href="sites.css">
+12px - pixles
+12em - looks at all the font size and multiplies by the other fonts (em is preferable for making a page viewable by ppl whith vision problems)
 
-**Self Invoking function (Immediatly Invoked function expressions IIFE)**
-wrap the anon function in parenthesis and add () at the end of the function
-(function() {
-alert('hello');
-})();
+responsive - page changes depending on the size of the page; useful for mobile devices(phone, tablet)
 
-don't need to add an extra call at the bottom. happens as soon as the page loads; could use to call a library
-JS uses it to wrap other code
-
-#####Arrays
-in javascript everything is an object
-
-**var shapes = ['square', 'rectangle', 'circle', 'triangle'];**
-
-**var emptyArray = new Array();**
-can run methods on it
-console.log(shapes.length);//number of items in array // zero key
-can do console.log(shapes[]); // and it'll list the whole array
-PHP is unique in that it can be associative arrays or indexed arrays, but javascript doesn't work that way
-other languages use lists, hashes, dictionaries
-in Javascript if we wanted to do the associative array stuff you have to make it an object
-
-console.log(shapes[1] + ' ' + shapes[2]);
-splicing will remove items from the arrray
-
-For loops with arrays
-for (var i = 0; i < shapes.length; i++) {
-	console.log('the shape at index ' + i + ' is: ' + shapes[i]);
-} // very interesting
-
-new - **foreach**
-if you're writing code in browsers that are only going to be using the big major browsers, then use it, but if it's gonna be on older browsers, don't use it yet (it'll break in IE8)
-
-shapes.forEach(function (element, index, array)) {
-console.log('The shape at index ' + index + ' is: ' + element);
+body {
+background: pink;
 }
 
-#####Manipulating arrays
+background: #ffffff; // white
+background: #000000; // black
 
-push - users.push("thomas"); adds at the end
-unshift - users.unshift("michael"); adds at the beginning of the array
-pop - users.pop(); takes the last one off and returns back the removed element
-shift - users.shift(); removes from the front of the array and returns the removed element
+#RRGGBB red, green, blue
+short hand - #00f // blue
+long hand #0000ff // blue
 
-var index = users.indexOf(''); // searches the array for the matching element and returns the location; if the element doesn't exist it returns -1
+background: rgb(0,0,255); // blue
+adobe kuler - palets
 
-"i was imagining facebook putting out a javascript array of all of its users."
-"stack overflow"
-"yes"
+when defining fonts, the last should be a global font that everyone is going to have like sans-serif
 
-**splice** - removes a specific element from the array
-returns removed item
+font-family: Helvetica, Verdana, sans-serif;
+font-weight: bold;
+font-style: italic;
+text-decoration: underline;
+text-decoration: line-through;
+text-align: center;
 
-removed = colors.splice(colors.indexOf('green'), 1)
-console.log(removed) // ['green']
+th,td {//table data
+ border: 1px solid black;
+ }
+ 
+ border-bottom: 5px rgb(152, 2, 2) dashed;
+ border-left: 5px
+ border-right:
+"that is so hedious that i love it"
 
-function fireSomebody(who) {
-	var index = users.indexOf(who);
+####selectors
+**elements are listed by just the element tag
+classes have a period in front
+id have a hashtag**
 
-	if(index != -1) {
-	users.splice(index, 1); // if you change 1 to two or three, it'll take off the elements that come after it
-	
+
+can make a class
+
+.class - means we want to apply a style to a class
+###id selector
+.class class selector
+
+/* comments */
+
+id will override the class if both are set and an element has both an id and a class
+
+.bold{
+	fort-weight: bold
+}
+
+.underline {
+	text-decoration: underline;
+} 
+<p class="underline bold">
+</p>
+
+.codeup > .td2 // creates a parent/child relationship between classes
+
+<table class="codeup">
+	<tr>
+		<td></td>
+	</tr>
+.codeup .td3 // decendent 
+.td1, .td2, .td3 // how to apply to multiple classes at one time
+
+relationships in terms of ancestory
+p.codeup // paragraph with class (will exclude anything that isn't a paragraph tag with the class of codeup)
+
+psudo classes
+a:link
+a:hover
+a:active
+a:visited
+p:hover
+
+#container h1.fancy-header // no space between h1 element and class
+
+###6/5/14
+<style>
+	#container h1{ // this will take all the h1s in the container 
+		color:blue;
 	}
-	fireSomebody('chris');
+</style
+<div id='container'>
+<h1>
+	Hello
+</h1>	
+
+#container>h1 // style any h1 that is a direct child of #container
+<div id='container'>
+	<div id='inner'> 
+	<h1>
+		Hello // won't change the color to blue???
+	</h1>
+	</div>
+</div>
+
+	
+can get really specific and can get really nested
+
+psudo-class/psudo-selector
+
+specificity (lol run T)
+
+start studying CSS3 // it'll be supported in all major browsers soon'
+browsers have a limit of how many styles per sheet
+**its 23,000, btw**
+so break the style sheet into multiple pages
+
+colors?CMYK? additive?
+
+
+unobtrusive javascript: // ?
+<span onclick link>
+bad b/c screenreader won't know it's a link
+better option is
+<a href='google.com' >Click me</a>
+
+can shorten anything is double zero (#0000ff -> #00f)
+RGB - subractive?
+#ccc - grey
+#030303 #F3F3F3
+
+gimp has a color picker // did not know that...
+
+#FF0000 = red
+#00FF00 = green
+#0000FF = blue
+#000000 = black
+#FFFFFF = white
+#808080 = grey
+
+.superscript{font-size:xx-small; vertical-align:top;} 
+.subscript{font-size:xx-small; vertical-align:bottom;} 
+
+element { background-image: url(http://www.example.com/images/bck.png); }
+element { background-repeat: repeat-x; } // this is used a lot, an image will be repeated on the x and y axis
+
+element { font-style: italic; }
+element { font-family: Helvetica, Arial, Sans-Serif; } // prioritized list
+element { font-family: "Times New Roman", Times, Serif; }
+element { font-family: "Courier New", Monospace; } // **monospace** means that the space between the letters will all have the same spaceing no matter what the letter is; makes it really straight and even; up and down and left and right all line up
+
+default browser behavior for em is italics
+font-style:oblique
+
+em for font size - corresponds to the current font size and multiplies; works well if you're going to be blowing up your screen to scale it to make it larger and it corressponds to the height of the letter M in the font set
+
+ol { list-style: upper-alpha; } // very cool; much needed
+ul { list-style: square; }
+https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type
+
+/* make second-level headers green */
+h2 { color: green; }
+/* ...but leave those in the sidebar alone so they use their parent's color */
+#sidebar h2 { color: inherit; } // can do this but it's sort of dumb? just be specific and name the color you want
+
+JS doesn't want any style inline; wants it all exteral style sheets
+inline style is ok for small stuff and in email templates
+
+
+**Box model**
+margin(border(padding(content)))
+top, right, bottom, left
+
+___________
+JS
+things to think about when designing websites:
+seeing impared, hearing impared, colorblind, keyboard only user, mobile user, user experience design
+
+colorblind - can't differenciate between green and red
+have to rely on clarity in words to communicate; use alternate text for links besides 'click here' use 'apply now' or
+arearollhidden hides it from screenreaders
+to tabindex in forms
+mobile users - responsive
+508 compliance
+html5 boilerplate
+understand frameworks
+mail chip for emails
+color oracle - to see like colorblind
+
+area attributes? - help with screen readers
+eric ford - knows front end really well
+battle of good design vs personal taste
+_______________
+
+
+overall width = width + padding-left + padding-right + border-left + border-right
+
+overall height = height + padding-top + padding-bottom + border-top + border-bottom
+
+div and span don't have anything to do with _____
+they're just containers
+one is a block element and one is an inline element
+div is a block element
+
+Div
+The HTML <div> element (or HTML Document Division Element) is the generic container for flow content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the class or id attributes) or because they share attribute values, such as lang. It should be used only when no other semantic element (such as <article> or <nav>) is appropriate.
+
+span is an inline element
+The HTML element is a generic inline container for phrasing content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the class or id attributes) or because they share attribute values, such as lang. It should be used only when no other semantic element is appropriate. <span> is very much like a <div> element, but <div> is a block-level element whereas a <span> is an inline element.
+
+div takes up the full width of the page
+span only takes up the space of the content area
+can change div width and height but doesn't change the block element of it (it's still going to take up the full width of the page, sort of)
+
+div {
+	border-right: 1px solid red;
+	border-top: 10px solid green;
+	width: 250px;
+	height: 75px;
+	padding: 20px;
+	margin-bottom: 10px;
+	
 }
-users.splice(index, 0); doesn't remove anything
-if the number to remove is larger than the number of items proceeding the element to be removed, it won't throw an error. it will remove what it can and keep going
 
-*add**
-function addBeforeSomebody(who, where)
-users.splice(index, 0, who); third parameter allows you to add elements to the array, will add before the element you find; splice can take any number of parameters, so it can add multiple elements
+"i knew i loved chrome but i love it a little more" lol
 
-**replace**
-function replaceSombody(who, where)
-var index = users.indexOf(where);
-if(index != -1){
-	users.splice(index, 1, who);
-}
+is it better to use <br> or move the boxes to position things?
+<br> is a line break, and it should be used to break lines b/c symantic, so no
 
-indexOf - searching from the first element to the last
-lastIndexOf - searches from the last elemenet to the first
+window resizer for chrome
+start with webpage view then scale it down, but it depends on the users; if the majority of ppl are going to be going to that website on a mobile device so be considerate of that
 
-reverse - reverses the order of the array
-users.sort().reverse();
-can chain objects
+<div class="sample-div">
+	This is a div
+	<span>This is a span</span>
+</div>
 
-**splitting**
+div.sample-div span {//
+	border: 1px solid blue;
+}	
 
-namesString.split(','); PHP explode
+div.sample-div>span //
 
-var namesString = namesArray.join(','); PHP implode
+something about the first child >_>
+
+####floats
+
+float- breaks element from the default contents of the page and it can move around, takes into account padding and margin, but all the other elements have moved too, it doesn't take up the full width of the page anymore
+breaks free of the flow, moves over to the left or right of the container,
+floats cool b/c the images wrap around the text of a paragraph
+
+clear: - clears a float; can clear left or right;
+text will wrap, so clear: the text; clear:left, clear:right, clear:both;
+*if a container only has floated elements, it collapses (weird stuff floats do)*
+google clearfix and it'll give solutions
+bootstrap has some stuff that will do this
+if floats hit the edge of a container, it'll go down and wrap around and shift to the next availible space
+
+###positioning
+**relative, absolute, and fixed positioning**
+position:relative // using this one without knowing the other two make it confusing 
+
+position: relative;
+        top: 10px;
+        right: 10px;
+//from the right go this many, from the top go this many, so the box ends up moving down and to the left
+
+absolute is used in conjuntion with relative
+position:absolute will be relative to the container that has position:relative; if you put a box inside that container and set it position:absolute; it'll shift it from the top/bottom/left/right
+position:absolute will override it being inside the container 
+
+####fixed
+position:fixed
+this is the thing where something gets fixed relative to the browser window and stays in place while you scroll
+
+css - media query - if the browser/viewport is more than 600px make it fixed, if it's less then let other stuff scroll with it
+
+reflect and share: things i learned today:
+sublime has this feature where it can have two windows open side by side and omg where have you been al my life
+i've been having flashbacks of when i used to style my deadjournal in html.  that was like 15 years ago.
+html/css sometimes is the devil.  but sometimes it's pretty cool
+i think i want to start a blog >_> nooooooooooo.  must... not... write...
+bootstrap might or might not be cool.  wordpress is generally hated by everyone.  not sure how to feel about that.
+
+###6/6/14
+
+z-index - can solve some problems that come up; x axis, y axis, z axis
+z-index can be used to move in and out of the page, so things can go under or over something
+
+
+has a lot of trouble predicting float behavior
+
+document flow - document tries to flow up
+
+when you position something it takes it out of the flow of the document, so content can get hidden under the fixed positioned thing
+margin: vertical, horizontal;
+
+css_positioning
+no idea; floating positions relative to absolute and BB started and approached it in a totally different way than me.  and i have no idea how he got what he did
+added a new container and put the other divs in it and made it wrap around?
+
+divs float, not just text; clear green; put it in a diff container
+
+_______
+
+coordiates for moving div corresponds to the direction you're moving it in; so if you want it top right then top right is the new (0,0)
+
+box model exercise - 
+div {float:left;
+		position:relative}// this makes the magic happen.  not sure why.  scoping the image in/to the box div
+
+put the image in the div colored box
+
+chrome web inspector lets you choose a place, see the px location and then save that in the code.
+div>img{
+	position:absolute;
+	top:0;
+	bottom:0;
+	
+}		
+ribbons.
+green box, clear:left; to get it on the new row
+
+
+####TwitterBootstrap
+CSS framework
+weird.  no opinion formed yet
+
+reflect and share: things I learned today:
 

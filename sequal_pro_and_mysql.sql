@@ -14,8 +14,8 @@ SELECT * FROM employees WHERE hire_date = '1990-10-22';
 SELECT emp_no, first_name, last_name
 FROM employees
 WHERE (
-	last_name IN ('Herber','Baek')
-	OR first_name = 'Shridhar'
+  last_name IN ('Herber','Baek')
+  OR first_name = 'Shridhar'
     )
     AND emp_no < 20000;
 
@@ -23,7 +23,7 @@ SELECT emp_no, first_name, last_name
 FROM employees
 WHERE last_name IN ('Herber','Baek')
     AND emp_no < 20000
-    OR first_name = 'Shridhar'; *\/
+    OR first_name = 'Shridhar'; 
 
 
 SELECT * FROM employees WHERE emp_no = '101010';
@@ -66,12 +66,12 @@ SELECT * FROM employees WHERE hire_date LIKE '%-10-30';
 
 SELECT * FROM employees
 WHERE MONTH(hire_date) = 10
-	AND DAY(hire_date) = 30;
-	
+  AND DAY(hire_date) = 30;
+  
 SELECT first_name, last_name, unix_timestamp(hire_date)
 FROM employees LIMIT 25;
 
-SELECT from_unixtime(1403029097);	
+SELECT from_unixtime(1403029097); 
 
 SELECT count(DISTINCT last_name) FROM employees;
 
@@ -150,4 +150,73 @@ SELECT e.emp_no, e.first_name, e.last_name, d.dept_name
 FROM employees e
 LEFT JOIN dept_emp de ON e.emp_no = de.emp_no
 LEFT JOIN departments d ON de.dept_no = d.dept_no
-WHERE de.to_date IS NULL; */
+WHERE de.to_date IS NULL; 
+
+INSERT INTO users (name, email, role_id) VALUES ('bob', 'bob@example.com', 1);
+INSERT INTO users (name, email, role_id) VALUES ('firstname1', 'firstname1@example.com', 2);
+INSERT INTO users (name, email, role_id) VALUES ('firstname2', 'firstname2@example.com', 2);
+INSERT INTO users (name, email, role_id) VALUES ('firstname3', 'firstname3@example.com', 2);
+INSERT INTO users (name, email, role_id) VALUES ('firstname4', 'firstname4@example.com', null);
+
+
+SELECT CONCAT(employees.first_name, ' ', employees.last_name) AS full_name, departments.dept_name
+FROM employees
+JOIN dept_emp
+ON dept_emp.emp_no = employees.emp_no
+JOIN departments
+ON departments.dept_no = dept_emp.dept_no
+WHERE employees.emp_no = 10002;
+
+SELECT users.name, users.email, users.role_id
+FROM users
+JOIN roles ON users.roles_id = roles.name;
+
+SELECT users.name, users.email, users.role_id 
+FROM users 
+LEFT JOIN roles 
+ON users.role_id = roles.id;
+
+-- incomplete
+SELECT count(users.role_id)
+FROM users
+JOIN roles
+ON users.role_id = roles.id;
+
+
+-- for class exercise incomplete
+SELECT CONCAT(employees.first_name, ' ', employees.last_name, ' ' departments.dept_name)
+FROM employees
+JOIN dept_manager
+ON dept_manager.emp_no = employees.emp_no
+FROM departments
+JOIN employees
+ON employees.emp_no = departments.dept_name;
+
+SELECT first_name, last_name, birth_date
+FROM employees
+WHERE emp_no
+    IN
+    (
+        SELECT emp_no
+        FROM dept_manager
+    )
+LIMIT 10;
+
+
+SELECT(*)
+FROM employees
+WHERE hire_date 
+  IN
+  (
+    SELECT hire_date 
+    FROM employees 
+WHERE emp_no = 101010;
+
+SELECT hire_date FROM employees WHERE emp_no = 101010;
+SELECT * FROM employees WHERE hire_date = '1990-10-22';
+
+SELECT * FROM employees WHERE hire_date = (SELECT hire_date FROM employees WHERE emp_no = 101010);
+use the equal here b/c it is only comparing to one result and use IN when there are multiple results?;
+
+SELECT title FROM titles WHERE emp_no IN (SELECT first_name FROM employees WHERE first_name = 'Aamod');
+this line above made an infinte loop in the search and crashed sequal pro.
